@@ -10,9 +10,20 @@ body {
   gap: 2%;
 }
 
-.nav .nav_links {
+.nav_links {
   display: block;
   color: white;
+}
+
+.visible-link {
+  display: block !important;
+  transition: display 4s linear;
+}
+
+.invisible-link {
+  display: none !important;
+  transform: scale(0);
+  transition: display 4s linear;
 }
 
 #burger-btn {
@@ -28,7 +39,7 @@ body {
 #burger-btn > div {
   height: 4px;
   border-radius: 30px;
-  background-color: blue;
+  background-color: white;
   position: absolute;
 }
 
@@ -55,38 +66,38 @@ body {
 .active-burger :nth-child(1) {
   transform-origin: bottom left;
   transform: rotate(45deg);
-  transition: transform 0.5s linear, width 0.5s linear;
-  width: 21px !important;
+  transition: transform 0.4s linear, width 0.4s linear;
+  width: 20.4px !important;
 }
 
 .active-burger :nth-child(2) {
   opacity: 0;
   transform: rotate(45deg);
-  transition: transform 0.5s linear, opacity 0.5s linear;
+  transition: transform 0.4s linear, opacity 0.4s linear;
 }
 .active-burger :nth-child(3) {
   transform-origin: top left;
   transform: rotate(-45deg);
-  transition: transform 0.5s linear, width 0.5s linear;
-  width: 21px !important;
+  transition: transform 0.4s linear, width 0.4s linear;
+  width: 20.4px !important;
 }
 
 .inactive-burger :nth-child(1) {
   transform-origin: bottom left;
   transform: rotate(0deg);
-  transition: transform 0.5s linear, width 0.5s linear;
+  transition: transform 0.4s linear, width 0.4s linear;
   width: 20px;
 }
 .inactive-burger :nth-child(2) {
   opacity: 1;
   transform: rotate(0deg);
-  transition: transform 0.5s linear, opacity 0.5s linear;
+  transition: transform 0.4s linear, opacity 0.4s linear;
 }
 
 .inactive-burger :nth-child(3) {
   transform-origin: top left;
   transform: rotate(0deg);
-  transition: transform 0.5s linear, width 0.5s linear;
+  transition: transform 0.4s linear, width 0.4s linear;
   width: 20px;
 }
 
@@ -100,14 +111,14 @@ body {
 }
 
 @media screen and (max-width: 768px) {
-  .nav #burger-btn {
+  #burger-btn {
     display: block;
   }
   .nav {
     flex-direction: column;
     gap: 10px;
   }
-  .nav .nav_links {
+  .nav_links {
     display: none;
   }
 }

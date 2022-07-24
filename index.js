@@ -9,14 +9,16 @@ burgerBtn.addEventListener("click", () => {
   displayMobileLinks = !displayMobileLinks;
   if (displayMobileLinks) {
     links.forEach((link) => {
-      link.style.display = "block";
+      link.classList.add("visible-link");
+      link.classList.remove("invisible-link");
     });
     burgerBtn.classList.add("active-burger");
     burgerBtn.classList.remove("inactive-burger");
     document.getElementById("content").style.backdropFilter = "brightness(8%)";
   } else {
     links.forEach((link) => {
-      link.style.display = "none";
+      link.classList.add("invisible-link");
+      link.classList.remove("visible-link");
     });
     burgerBtn.classList.remove("active-burger");
     burgerBtn.classList.add("inactive-burger");
@@ -31,8 +33,13 @@ window.addEventListener("resize", () => {
   if (widthScreen > 768) {
     links.forEach((link) => {
       link.style.display = "block";
-      displayMobileLinks = false;
+      link.classList.add("visible-link");
+      link.classList.remove("invisible-link");
     });
+    displayMobileLinks = false;
+    burgerBtn.classList.remove("active-burger");
+    burgerBtn.classList.add("inactive-burger");
+    document.getElementById("content").style.backdropFilter = "";
   } else if (widthScreen <= 768) {
     //if mobile links visibility status is true display links
     if (displayMobileLinks) {
@@ -44,6 +51,8 @@ window.addEventListener("resize", () => {
     else {
       links.forEach((link) => {
         link.style.display = "none";
+        link.classList.add("invisible-link");
+        link.classList.remove("visible-link");
       });
     }
   }
@@ -52,7 +61,8 @@ window.addEventListener("resize", () => {
 document.getElementById("content").addEventListener("click", () => {
   if (displayMobileLinks) {
     links.forEach((link) => {
-      link.style.display = "none";
+      link.classList.add("invisible-link");
+      link.classList.remove("visible-link");
     });
     document.getElementById("content").style.backdropFilter = "";
     displayMobileLinks = false;
