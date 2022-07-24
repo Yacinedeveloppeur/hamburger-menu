@@ -1,0 +1,51 @@
+body {
+  margin: 0px;
+}
+
+.nav {
+  background-color: rgb(0, 60, 255);
+  padding: 2%;
+  display: flex;
+  justify-content: right;
+  gap: 2%;
+}
+
+.nav .nav_links {
+  display: block;
+  color: white;
+}
+
+.nav #burger-btn {
+  display: none;
+}
+
+#burger-btn:hover {
+  cursor: pointer;
+}
+
+#content {
+  padding: 5%;
+  padding-top: 2%;
+}
+
+#content p:first-of-type {
+  margin-top: 0px;
+}
+
+@media screen and (max-width: 768px) {
+  .nav #burger-btn {
+    display: block;
+  }
+  .nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .nav .nav_links {
+    display: none;
+  }
+  .nav > #burger-btn {
+    background-color: red;
+    width: 40px;
+    height: 40px;
+  }
+}
