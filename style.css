@@ -20,36 +20,74 @@ body {
 }
 
 #burger-btn {
-  background-color: red;
-  width: 30px;
-  height: 30px;
-   position: relative;
+  width: 20px;
+  height: 20px;
+  position: relative;
 }
 
 #burger-btn > div {
+  height: 4px;
+  border-radius: 30px;
+  background-color: blue;
   position: absolute;
-  height: 3px;
-  width: 100%;
+}
+
+#burger-btn:hover,
+#burger-btn > div:hover {
+  cursor: pointer;
 }
 
 #burger-btn :nth-child(1) {
-  background-color: yellow;
-  top: 0px;
+  top: 0;
+  width: 20px;
 }
 
 #burger-btn :nth-child(2) {
-  background-color: aqua;
-  /* fix second-bar to exact center --> (height burger-container/2) - (height second-bar/2) */
-  top: 13.5px;
+  top: 8px;
+  width: 20px;
 }
 
 #burger-btn :nth-child(3) {
-  background-color: blueviolet;
   bottom: 0;
+  width: 20px;
 }
 
-#burger-btn:hover {
-  cursor: pointer;
+.active-burger :nth-child(1) {
+  transform-origin: bottom left;
+  transform: rotate(45deg);
+  transition: transform 0.5s linear, width 0.5s linear;
+  width: 21px !important;
+}
+
+.active-burger :nth-child(2) {
+  opacity: 0;
+  transform: rotate(45deg);
+  transition: transform 0.5s linear, opacity 0.5s linear;
+}
+.active-burger :nth-child(3) {
+  transform-origin: top left;
+  transform: rotate(-45deg);
+  transition: transform 0.5s linear, width 0.5s linear;
+  width: 21px !important;
+}
+
+.inactive-burger :nth-child(1) {
+  transform-origin: bottom left;
+  transform: rotate(0deg);
+  transition: transform 0.5s linear, width 0.5s linear;
+  width: 20px;
+}
+.inactive-burger :nth-child(2) {
+  opacity: 1;
+  transform: rotate(0deg);
+  transition: transform 0.5s linear, opacity 0.5s linear;
+}
+
+.inactive-burger :nth-child(3) {
+  transform-origin: top left;
+  transform: rotate(0deg);
+  transition: transform 0.5s linear, width 0.5s linear;
+  width: 20px;
 }
 
 #content {
@@ -72,5 +110,4 @@ body {
   .nav .nav_links {
     display: none;
   }
-
 }

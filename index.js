@@ -11,13 +11,15 @@ burgerBtn.addEventListener("click", () => {
     links.forEach((link) => {
       link.style.display = "block";
     });
-    burgerBtn.classList.add("active-burger")
+    burgerBtn.classList.add("active-burger");
+    burgerBtn.classList.remove("inactive-burger");
     document.getElementById("content").style.backdropFilter = "brightness(8%)";
   } else {
     links.forEach((link) => {
       link.style.display = "none";
     });
-    burgerBtn.classList.remove("active-burger")
+    burgerBtn.classList.remove("active-burger");
+    burgerBtn.classList.add("inactive-burger");
     document.getElementById("content").style.backdropFilter = "";
   }
 });
@@ -54,5 +56,7 @@ document.getElementById("content").addEventListener("click", () => {
     });
     document.getElementById("content").style.backdropFilter = "";
     displayMobileLinks = false;
+    burgerBtn.classList.remove("active-burger");
+    burgerBtn.classList.add("inactive-burger");
   }
 });
