@@ -11,11 +11,13 @@ burgerBtn.addEventListener("click", () => {
     links.forEach((link) => {
       link.style.display = "block";
     });
+    burgerBtn.classList.add("active-burger")
     document.getElementById("content").style.backdropFilter = "brightness(8%)";
   } else {
     links.forEach((link) => {
       link.style.display = "none";
     });
+    burgerBtn.classList.remove("active-burger")
     document.getElementById("content").style.backdropFilter = "";
   }
 });

@@ -15,8 +15,37 @@ body {
   color: white;
 }
 
-.nav #burger-btn {
+#burger-btn {
   display: none;
+}
+
+#burger-btn {
+  background-color: red;
+  width: 30px;
+  height: 30px;
+   position: relative;
+}
+
+#burger-btn > div {
+  position: absolute;
+  height: 3px;
+  width: 100%;
+}
+
+#burger-btn :nth-child(1) {
+  background-color: yellow;
+  top: 0px;
+}
+
+#burger-btn :nth-child(2) {
+  background-color: aqua;
+  /* fix second-bar to exact center --> (height burger-container/2) - (height second-bar/2) */
+  top: 13.5px;
+}
+
+#burger-btn :nth-child(3) {
+  background-color: blueviolet;
+  bottom: 0;
 }
 
 #burger-btn:hover {
@@ -43,9 +72,5 @@ body {
   .nav .nav_links {
     display: none;
   }
-  .nav > #burger-btn {
-    background-color: red;
-    width: 40px;
-    height: 40px;
-  }
+
 }
