@@ -1,70 +1,59 @@
 // DOM elements : burger button and links
 const burgerBtn = document.getElementById("burger-btn");
-const links = document.querySelectorAll(".nav .nav_links");
+const nav = document.getElementsByClassName("nav")[0];
+const content = document.getElementById("content");
 
-// Status : Mobile links visibility
+// STATUS : Mobile links visibility
 let displayMobileLinks = false;
-// Switch Mobile links visibility on click
+
+// CLICK ON BURGER BUTTON : TO SWITCH LINKS VISIBILITY
 burgerBtn.addEventListener("click", () => {
   displayMobileLinks = !displayMobileLinks;
   if (displayMobileLinks) {
-    links.forEach((link) => {
-      link.classList.add("visible-link");
-      link.classList.remove("invisible-link");
-    });
+    nav.classList.add("visible-link");
+    nav.classList.remove("invisible-link");
     burgerBtn.classList.add("active-burger");
     burgerBtn.classList.remove("inactive-burger");
-    document.getElementById("content").style.backdropFilter = "brightness(8%)";
+    content.classList.add("darkness-content");
+    content.classList.remove("brightness-content");
   } else {
-    links.forEach((link) => {
-      link.classList.add("invisible-link");
-      link.classList.remove("visible-link");
-    });
+    nav.classList.add("invisible-link");
+    nav.classList.remove("visible-link");
     burgerBtn.classList.remove("active-burger");
     burgerBtn.classList.add("inactive-burger");
-    document.getElementById("content").style.backdropFilter = "";
+    content.classList.add("brightness-content");
+    content.classList.remove("darkness-content");
   }
 });
 
-// Switch links and Mobile links visibility on resizing window
+// RESIZE WINDOW : TO SWITCH LINKS VISIBILITY
 window.addEventListener("resize", () => {
   const widthScreen = window.innerWidth;
   //display links and switch mobile links visibility status to false
   if (widthScreen > 768) {
-    links.forEach((link) => {
-      link.style.display = "block";
-      link.classList.add("visible-link");
-      link.classList.remove("invisible-link");
-    });
+    // links.style.display = "flex";
+    nav.classList.add("visible-link");
+    nav.classList.remove("invisible-link");
     displayMobileLinks = false;
     burgerBtn.classList.remove("active-burger");
     burgerBtn.classList.add("inactive-burger");
-    document.getElementById("content").style.backdropFilter = "";
+    content.classList.add("brightness-content");
+    content.classList.remove("darkness-content");
+    // content.style.backdropFilter = "";
   } else if (widthScreen <= 768) {
-    //if mobile links visibility status is true display links
-    if (displayMobileLinks) {
-      links.forEach((link) => {
-        link.style.display = "block";
-      });
-    }
-    // if mobile links visibility status is false hide links
-    else {
-      links.forEach((link) => {
-        link.style.display = "none";
-        link.classList.add("invisible-link");
-        link.classList.remove("visible-link");
-      });
-    }
+    nav.classList.add("invisible-link");
+    nav.classList.remove("visible-link");
   }
 });
 
-document.getElementById("content").addEventListener("click", () => {
+//CLICK ON WINDOW TO CLOSE MOBILE NAV
+content.addEventListener("click", () => {
   if (displayMobileLinks) {
-    links.forEach((link) => {
-      link.classList.add("invisible-link");
-      link.classList.remove("visible-link");
-    });
-    document.getElementById("content").style.backdropFilter = "";
+    nav.classList.add("invisible-link");
+    nav.classList.remove("visible-link");
+    content.classList.add("brightness-content");
+    content.classList.remove("darkness-content");
+    // content.style.backdropFilter = "";
     displayMobileLinks = false;
     burgerBtn.classList.remove("active-burger");
     burgerBtn.classList.add("inactive-burger");

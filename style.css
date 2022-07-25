@@ -2,28 +2,45 @@ body {
   margin: 0px;
 }
 
-.nav {
+#header {
   background-color: rgb(0, 60, 255);
-  padding: 2%;
+  display: flex;
+  justify-content: right;
+  flex-direction: column;
+  padding: 3%;
+}
+
+.nav {
   display: flex;
   justify-content: right;
   gap: 2%;
+  width: 100%;
 }
 
 .nav_links {
-  display: block;
   color: white;
 }
 
 .visible-link {
-  display: block !important;
-  transition: display 4s linear;
+  opacity: 1 !important;
+  max-height: 300px !important;
+  transition: opacity 0.4s linear, max-height 0.4s linear !important;
 }
 
 .invisible-link {
-  display: none !important;
-  transform: scale(0);
-  transition: display 4s linear;
+  opacity: 0 !important;
+  max-height: 0px !important;
+  transition: opacity 0.4s linear, max-height 0.4s linear !important;
+}
+
+.brightness-content {
+  backdrop-filter: "";
+  transition: backdrop-filter 0.4s linear;
+}
+
+.darkness-content {
+  backdrop-filter: brightness(8%);
+  transition: backdrop-filter 0.4s linear;
 }
 
 #burger-btn {
@@ -34,6 +51,7 @@ body {
   width: 20px;
   height: 20px;
   position: relative;
+  margin-bottom: 2%;
 }
 
 #burger-btn > div {
@@ -117,8 +135,7 @@ body {
   .nav {
     flex-direction: column;
     gap: 10px;
-  }
-  .nav_links {
-    display: none;
+    opacity: 0;
+    max-height: 0px;
   }
 }
