@@ -6,54 +6,100 @@ const content = document.getElementById("content");
 // STATUS : Mobile links visibility
 let displayMobileNav = false;
 
-function handleMobileNav(status) {
-  if (status == "active") {
-    //links visibility
+function showLinks(order) {
+  if (order == true) {
     nav.classList.add("visible-link");
     nav.classList.remove("invisible-link");
-    //Burger animation
-    burgerBtn.classList.add("active-burger");
-    burgerBtn.classList.remove("inactive-burger");
-    //Brightness content
-    content.classList.add("darkness-content");
-    content.classList.remove("brightness-content");
-  } else if (status == "inactive") {
+  } else {
     nav.classList.add("invisible-link");
     nav.classList.remove("visible-link");
+  }
+}
+
+function activeBurger(order) {
+  if (order == true) {
+    burgerBtn.classList.add("active-burger");
+    burgerBtn.classList.remove("inactive-burger");
+  } else {
     burgerBtn.classList.remove("active-burger");
     burgerBtn.classList.add("inactive-burger");
+  }
+}
+
+function darkenContent(order) {
+  if (order == true) {
+    content.classList.add("darkness-content");
+    content.classList.remove("brightness-content");
+  } else {
     content.classList.add("brightness-content");
     content.classList.remove("darkness-content");
   }
 }
 
-// CLICK ON BURGER BUTTON : TO SWITCH NAV VISIBILITY
+function handleMobileNav(status) {
+  if (status == "active") {
+    //display links
+    nav.classList.add("visible-link");
+    nav.classList.remove("invisible-link");
+    //cross burger
+    burgerBtn.classList.add("active-burger");
+    burgerBtn.classList.remove("inactive-burger");
+    //darken content
+    content.classList.add("darkness-content");
+    content.classList.remove("brightness-content");
+  } else if (status == "inactive") {
+    //hide links
+    nav.classList.add("invisible-link");
+    nav.classList.remove("visible-link");
+    //initial burger
+    burgerBtn.classList.remove("active-burger");
+    burgerBtn.classList.add("inactive-burger");
+    //brighten content
+    content.classList.add("brightness-content");
+    content.classList.remove("darkness-content");
+  }
+}
+
+// SWITCH NAV VISIBILITY ON CLICK ON THE BURGER BUTTON
 burgerBtn.addEventListener("click", () => {
   displayMobileNav = !displayMobileNav;
   if (displayMobileNav) {
-    handleMobileNav("active");
+    showLinks(true);
+    activeBurger(true);
+    darkenContent(true);
   } else {
-    handleMobileNav("inactive");
+    showLinks(false);
+    activeBurger(false);
+    darkenContent(false);
   }
 });
 
-// RESIZE WINDOW : TO SWITCH LINKS VISIBILITY
+// SWITCH NAV VISIBILITY ON RESIZE WINDOW
 window.addEventListener("resize", () => {
   //Get window width
   const widthScreen = window.innerWidth;
   if (widthScreen > 768) {
     displayMobileNav = false;
-    handleMobileNav("active");
+    showLinks(true);
+    darkenContent(false);
   } else if (widthScreen <= 768) {
-    nav.classList.add("invisible-link");
-    nav.classList.remove("visible-link");
+    if (displayMobileNav) {
+      showLinks(true);
+    } else {
+      activeBurger(false);
+      showLinks(false);
+      darkenContent(false);
+      displayMobileNav = false;
+    }
   }
 });
 
-//CLICK ON WINDOW TO CLOSE MOBILE NAV
+// CLOSE MOBILE NAV ON CLICK ON THE CONTENT
 content.addEventListener("click", () => {
   if (displayMobileNav) {
     displayMobileNav = false;
-    handleMobileNav("inactive");
+    showLinks(false);
+    activeBurger(false);
+    darkenContent(false);
   }
 });

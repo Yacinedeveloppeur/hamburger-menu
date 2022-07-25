@@ -2,6 +2,25 @@ body {
   margin: 0px;
 }
 
+/* CONTENT */
+#content {
+  padding: 5%;
+  padding-top: 2%;
+}
+#content p:first-of-type {
+  margin-top: 0px;
+}
+/* brighten content */
+.brightness-content {
+  backdrop-filter: "";
+  transition: backdrop-filter 0.4s linear;
+}
+/* darken content  */
+.darkness-content {
+  backdrop-filter: brightness(8%);
+  transition: backdrop-filter 0.4s linear;
+}
+
 #header {
   background-color: rgb(0, 60, 255);
   display: flex;
@@ -10,84 +29,68 @@ body {
   padding: 3%;
 }
 
+/* NAVIGATION */
 .nav {
   display: flex;
   justify-content: right;
   gap: 2%;
   width: 100%;
 }
-
 .nav_links {
   color: white;
 }
-
+/* display nav */
 .visible-link {
   opacity: 1 !important;
   max-height: 300px !important;
   transition: opacity 0.4s linear, max-height 0.4s linear !important;
 }
-
+/* hide nav */
 .invisible-link {
   opacity: 0 !important;
   max-height: 0px !important;
   transition: opacity 0.4s linear, max-height 0.4s linear !important;
 }
 
-.brightness-content {
-  backdrop-filter: "";
-  transition: backdrop-filter 0.4s linear;
-}
-
-.darkness-content {
-  backdrop-filter: brightness(8%);
-  transition: backdrop-filter 0.4s linear;
-}
-
+/* BURGER BUTTON */
 #burger-btn {
   display: none;
 }
-
 #burger-btn {
   width: 20px;
   height: 20px;
   position: relative;
   margin-bottom: 2%;
 }
-
 #burger-btn > div {
   height: 4px;
   border-radius: 30px;
   background-color: white;
   position: absolute;
 }
-
 #burger-btn:hover,
 #burger-btn > div:hover {
   cursor: pointer;
 }
-
 #burger-btn :nth-child(1) {
   top: 0;
   width: 20px;
 }
-
 #burger-btn :nth-child(2) {
   top: 8px;
   width: 20px;
 }
-
 #burger-btn :nth-child(3) {
   bottom: 0;
   width: 20px;
 }
-
+/* active burger animation */
 .active-burger :nth-child(1) {
   transform-origin: bottom left;
   transform: rotate(45deg);
   transition: transform 0.4s linear, width 0.4s linear;
   width: 20.4px !important;
 }
-
 .active-burger :nth-child(2) {
   opacity: 0;
   transform: rotate(45deg);
@@ -99,7 +102,7 @@ body {
   transition: transform 0.4s linear, width 0.4s linear;
   width: 20.4px !important;
 }
-
+/* inactive burger animation */
 .inactive-burger :nth-child(1) {
   transform-origin: bottom left;
   transform: rotate(0deg);
@@ -111,7 +114,6 @@ body {
   transform: rotate(0deg);
   transition: transform 0.4s linear, opacity 0.4s linear;
 }
-
 .inactive-burger :nth-child(3) {
   transform-origin: top left;
   transform: rotate(0deg);
@@ -119,15 +121,7 @@ body {
   width: 20px;
 }
 
-#content {
-  padding: 5%;
-  padding-top: 2%;
-}
-
-#content p:first-of-type {
-  margin-top: 0px;
-}
-
+/* RESPONSIVE DESIGN */
 @media screen and (max-width: 768px) {
   #burger-btn {
     display: block;
