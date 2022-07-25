@@ -1,22 +1,23 @@
-// DOM elements : burger button and links
+// GET DOM elements : burger button, nav and content
 const burgerBtn = document.getElementById("burger-btn");
-const nav = document.getElementsByClassName("nav")[0];
+const nav = document.getElementById("nav");
 const content = document.getElementById("content");
 
 // STATUS : Mobile links visibility
-let displayMobileLinks = false;
+let displayMobileNav = false;
 
-// CLICK ON BURGER BUTTON : TO SWITCH LINKS VISIBILITY
-burgerBtn.addEventListener("click", () => {
-  displayMobileLinks = !displayMobileLinks;
-  if (displayMobileLinks) {
+function handleMobileNav(status) {
+  if (status == "active") {
+    //links visibility
     nav.classList.add("visible-link");
     nav.classList.remove("invisible-link");
+    //Burger animation
     burgerBtn.classList.add("active-burger");
     burgerBtn.classList.remove("inactive-burger");
+    //Brightness content
     content.classList.add("darkness-content");
     content.classList.remove("brightness-content");
-  } else {
+  } else if (status == "inactive") {
     nav.classList.add("invisible-link");
     nav.classList.remove("visible-link");
     burgerBtn.classList.remove("active-burger");
@@ -24,22 +25,25 @@ burgerBtn.addEventListener("click", () => {
     content.classList.add("brightness-content");
     content.classList.remove("darkness-content");
   }
+}
+
+// CLICK ON BURGER BUTTON : TO SWITCH NAV VISIBILITY
+burgerBtn.addEventListener("click", () => {
+  displayMobileNav = !displayMobileNav;
+  if (displayMobileNav) {
+    handleMobileNav("active");
+  } else {
+    handleMobileNav("inactive");
+  }
 });
 
 // RESIZE WINDOW : TO SWITCH LINKS VISIBILITY
 window.addEventListener("resize", () => {
+  //Get window width
   const widthScreen = window.innerWidth;
-  //display links and switch mobile links visibility status to false
   if (widthScreen > 768) {
-    // links.style.display = "flex";
-    nav.classList.add("visible-link");
-    nav.classList.remove("invisible-link");
-    displayMobileLinks = false;
-    burgerBtn.classList.remove("active-burger");
-    burgerBtn.classList.add("inactive-burger");
-    content.classList.add("brightness-content");
-    content.classList.remove("darkness-content");
-    // content.style.backdropFilter = "";
+    displayMobileNav = false;
+    handleMobileNav("active");
   } else if (widthScreen <= 768) {
     nav.classList.add("invisible-link");
     nav.classList.remove("visible-link");
@@ -48,14 +52,8 @@ window.addEventListener("resize", () => {
 
 //CLICK ON WINDOW TO CLOSE MOBILE NAV
 content.addEventListener("click", () => {
-  if (displayMobileLinks) {
-    nav.classList.add("invisible-link");
-    nav.classList.remove("visible-link");
-    content.classList.add("brightness-content");
-    content.classList.remove("darkness-content");
-    // content.style.backdropFilter = "";
-    displayMobileLinks = false;
-    burgerBtn.classList.remove("active-burger");
-    burgerBtn.classList.add("inactive-burger");
+  if (displayMobileNav) {
+    displayMobileNav = false;
+    handleMobileNav("inactive");
   }
 });
