@@ -17,6 +17,7 @@ body {
 }
 /* darken content  */
 .darkness-content {
+  cursor: default;
   backdrop-filter: brightness(8%);
   transition: backdrop-filter 0.4s linear;
 }
@@ -45,11 +46,19 @@ body {
   max-height: 300px !important;
   transition: opacity 0.4s linear, max-height 0.4s linear !important;
 }
+.visible-link a {
+  transform: scaleY(1);
+  transition: transform 0.4s linear;
+}
 /* hide nav */
 .invisible-link {
   opacity: 0 !important;
   max-height: 0px !important;
   transition: opacity 0.4s linear, max-height 0.4s linear !important;
+}
+.invisible-link a {
+  transform: scaleY(0);
+  transition: transform 0.4s linear;
 }
 
 /* BURGER BUTTON */
